@@ -13,10 +13,11 @@
   "scripts": {
     "test": "jest",
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "lint": "tsc"
+    "lint": "tsc",
+    "release": "pnpm run test && pnpm run lint && pnpm run build && changesets publish"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sam James",
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.24.4",
