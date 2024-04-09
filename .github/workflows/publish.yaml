@@ -21,6 +21,8 @@ jobs:
       - run: pnpm install --no-frozen-lockfile
       - name: Create Release Pull Request or Publish
         id: changesets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: changesets/action@v1
         with:
           publish: pnpm run build
