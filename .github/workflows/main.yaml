@@ -18,4 +18,4 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install --no-frozen-lockfile
-      - run: pnpm lint && npm build
+      - run: pnpm lint && pnpm build
