@@ -14,7 +14,7 @@
     "test": "jest",
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc",
-    "release": "pnpm run test && pnpm run lint && pnpm run build && changesets publish"
+    "release": "pnpm run test && pnpm run lint && pnpm run build && changeset publish"
   },
   "keywords": [],
   "author": "Sam James",
