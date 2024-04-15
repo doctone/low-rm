@@ -1,6 +1,5 @@
 import { initializeDatabase } from "./connection";
 import { when } from "jest-when";
-// Mock the pg library
 jest.mock("pg", () => {
   const mClient = {
     connect: jest.fn(),
@@ -23,6 +22,7 @@ describe("Low-RM", () => {
       expect(client.connect).toHaveBeenCalledTimes(1);
     });
   });
+
   describe("select( {query, table} )", () => {
     it("should return the result of a SELECT query", async () => {
       const client = await initializeDatabase("connectionString");
@@ -35,6 +35,24 @@ describe("Low-RM", () => {
         .mockResolvedValue(expectedResult as never);
 
       const result = await client.select({ query, table });
+
+      expect(result).toEqual(expectedResult);
+      expect(client.query).toHaveBeenCalledWith(expectedQuery);
+    });
+  });
+
+  describe("insert({ table, values })", () => {
+    it("should insert a new record into the specified table", async () => {
+      const client = await initializeDatabase("connectionString");
+      const table = "users";
+      const values = ['1, "Alice"'];
+      const expectedQuery = `INSERT INTO ${table} VALUES ${values.join(",")}`;
+      const expectedResult = { rows: [{ id: 1, name: "Alice" }] };
+      when(client.query)
+        .calledWith(expectedQuery as never)
+        .mockResolvedValue(expectedResult as never);
+
+      const result = await client.insert({ table, values });
 
       expect(result).toEqual(expectedResult);
       expect(client.query).toHaveBeenCalledWith(expectedQuery);
