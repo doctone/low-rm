@@ -1,5 +1,11 @@
 # low-rm
 
+## 0.0.4
+
+### Patch Changes
+
+- 6f6c4e0: Update connection string type
+
 ## 0.0.3
 
 ### Patch Changes
