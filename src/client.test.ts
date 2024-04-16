@@ -15,7 +15,9 @@ describe("Low-RM", () => {
   describe("connection", () => {
     it("should successfully establish a database connection", async () => {
       // Act
-      const client = await initializeDatabase("connectionString");
+      const client = await initializeDatabase(
+        "postgres://user:password@localhost:5432/dbname"
+      );
 
       // Assert
       expect(client).toBeDefined();
@@ -25,7 +27,9 @@ describe("Low-RM", () => {
 
   describe("select( {query, table} )", () => {
     it("should return the result of a SELECT query", async () => {
-      const client = await initializeDatabase("connectionString");
+      const client = await initializeDatabase(
+        "postgres://user:password@localhost:5432/dbname"
+      );
       const query = "id, name";
       const table = "users";
       const expectedQuery = `SELECT ${query} FROM ${table}`;
@@ -43,7 +47,9 @@ describe("Low-RM", () => {
 
   describe("insert({ table, values })", () => {
     it("should insert a new record into the specified table", async () => {
-      const client = await initializeDatabase("connectionString");
+      const client = await initializeDatabase(
+        "postgres://user:password@localhost:5432/dbname"
+      );
       const table = "users";
       const values = ['1, "Alice"'];
       const expectedQuery = `INSERT INTO ${table} VALUES ${values.join(",")}`;
