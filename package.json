@@ -14,6 +14,7 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
+    "validate": "pnpm run test && pnpm run lint",
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc",
     "release": "pnpm run test && pnpm run lint && pnpm run build && changeset publish"
