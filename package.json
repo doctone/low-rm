@@ -17,7 +17,8 @@
     "validate": "pnpm run test && pnpm run lint",
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc",
-    "release": "pnpm run test && pnpm run lint && pnpm run build && changeset publish"
+    "release": "pnpm run test && pnpm run lint && pnpm run build && changeset publish",
+    "prepare": "husky"
   },
   "husky": {
     "hooks": {
