@@ -17,7 +17,7 @@ export async function initializeDatabase(
     // Connect to the database
     await client.connect();
     console.log("Connected to the database.");
-    const lowRm = createClient(client);
+    const lowRm = createClient("client");
     return lowRm;
   } catch (error) {
     console.error("Unable to connect to the database:", error);
